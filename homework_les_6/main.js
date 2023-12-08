@@ -78,6 +78,7 @@ let newCourses = coursesAndDurationArray.map((i, index) => {
     return {id: index, title: i.title, monthDuration:i.monthDuration};
 });
 console.log(newCourses);
+console.log(coursesAndDurationArray.map((i, index) => ({id: index + 1, ...i})));
 //======================================================================================================================
 //     описати колоду карт (від 6 до туза без джокерів)
 let cards = [
@@ -120,6 +121,7 @@ let cards = [
 ];
 // - знайти піковий туз
 console.log(cards.filter(u => u.cardSuit === 'spade' && u.value === 'ace'));
+console.log(cards.find(u => u.cardSuit === 'spade' && u.value === 'ace'));
 // - всі шістки
 console.log(cards.filter(u => u.value === '6'));
 // - всі червоні карти
@@ -199,15 +201,22 @@ let coursesArray = [
     }
 ];
 // --написати пошук всіх об'єктів, в який в modules є sass
-function objSearch(arr, obj) {
-    return arr.filter(u => {
-        for (let item of u.modules) {
-            if (item === obj) {
-                return u;
-            }
-        }
-    });
-}
-console.log(objSearch(coursesArray, 'sass'));
+// function objSearch(arr, obj) {
+//     return arr.filter(u => {
+//         for (let item of u.modules) {
+//             if (item === obj) {
+//                 return u;
+//             }
+//         }
+//     });
+// }
+let sass = coursesArray.filter(item => {
+    return item.modules.find(u => u ==='sass');
+})
+console.log(sass)
+console.log(coursesArray.filter(item => item.modules.includes('sass')));
+// console.log(objSearch(coursesArray, 'sass'));
 // --написати пошук всіх об'єктів, в який в modules є docker
-console.log(objSearch(coursesArray, 'docker'));
+console.log(coursesArray.filter(item => item.modules.find(u => u === 'docker')));
+console.log(coursesArray.filter(item => item.modules.includes('docker')));
+// console.log(objSearch(coursesArray, 'docker'));

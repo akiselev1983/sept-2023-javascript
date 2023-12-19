@@ -1,0 +1,31 @@
+
+.blue {
+    border: 3px solid blue;
+    margin: 10px;
+}
+.red {
+    border: 3px solid red;
+    margin: 10px;
+}
+.flex {
+    display: flex;
+}
+.centre {
+    text-align: center;
+}
+.sizeMonth {
+    width: 30%;
+}
+.sizeHour {
+    width: 70%;
+}
+.sizeLi {
+    width: 97%;
+}
+.listNone {
+    list-style: none;
+    width: 98%;
+}
+.padding {
+    padding-left: 10px;
+}

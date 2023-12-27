@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .cell {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<!--*** Створити 3 інпута та кнопку. Один визначає кількість рядків, другий - кількість ячеєк, третій вмиіст ячеєк.-->
+<!--При натисканні кнопки, вся ця інформація зчитується і формується табличка, з відповідним вмістом.-->
+<form name="f1">
+    <label>Кількість рядків:
+    <input type="number" name="row">
+    </label>
+    <label>Кількість ячеєк:
+        <input type="number" name="cell">
+    </label>
+    <label>Вміст ячеєк:
+        <input type="text" name="content">
+    </label>
+    <button>CLICK</button>
+</form>
+
+<script>
+    let form = document.forms.f1;
+    form.onsubmit = function (ev) {
+        ev.preventDefault();
+        let table = document.createElement('table');
+        for (let i = 0; i < this.row.value; i++) {
+            let tr = document.createElement('tr');
+            table.append(tr);
+            for (let j=0; j<this.cell.value; j++) {
+                let td = document.createElement('td');
+                td.classList.add('cell');
+                td.innerText = this.content.value;
+                tr.append(td);
+
+            }
+        }
+        document.body.appendChild(table);
+    }
+
+
+</script>
+
+</body>
+</html>

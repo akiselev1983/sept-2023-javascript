@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #f1 {
+            display: flex;
+            flex-direction: column;
+            width: 20%;
+            height: 150px;
+            border: 2px solid rebeccapurple;
+            align-items: center;
+            justify-content: space-around;
+        }
+        .card1 {
+            width: 30%;
+            height: 200px;
+            border: 2px solid black;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+<!--Стоврити форму з трьома полями для name,sruname,age та кнопкою. При натисканні на кнопку зчитати данні з полів,-->
+<!--та вивести об'єкт в документ. Іншими словами : заповниои форму, натиснули кнопку, під формою з'явився блок з вашим об'єктом-->
+<!--========================================================================================================================-->
+<form id="f1">
+    <label><input type="text" placeholder="name" name="name"></label>
+    <label><input type="text" placeholder="surname" name="surname"></label>
+    <label><input type="number" placeholder="age" name="age"></label>
+    <label><input type="submit" value="SEND"></label>
+</form>
+
+<script>
+let form = document.forms[0];
+form.onsubmit = function (ev) {
+    ev.preventDefault();
+    const div = document.createElement('div');
+    const card = document.createElement('h3');
+    const name = document.createElement('h4');
+    const surname = document.createElement('h4');
+    const age = document.createElement('h4');
+
+    div.classList.add('card1');
+
+    card.innerText = 'CARD';
+    name.innerText = `NAME: ${this.name.value}`;
+    surname.innerText = `SURNAME: ${ev.target.surname.value}`;
+    age.innerText = `AGE: ${this.age.value}`
+
+    div.append(card, name, surname, age);
+
+    document.body.appendChild(div);
+
+    this.name.value = '';
+    this.surname.value = '';
+    this.age.value = '';
+}
+
+
+</script>
+
+</body>
+</html>

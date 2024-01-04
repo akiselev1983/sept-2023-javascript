@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+
+<script>
+    // setTimeout(() => {
+    //     console.log('1')
+    // }, 1000)
+    // setTimeout(() => {
+    //     console.log('2')
+    // }, 3000)
+
+    // setTimeout(() => {
+    //     console.log('1')
+    //     setTimeout(() => {
+    //         console.log('2')
+    //     }, 1000)
+    // }, 3000)
+
+    let promise = new Promise((resolve) => {
+        setTimeout(() => {
+            console.log('111')
+            resolve()
+        }, 1000)
+    });
+    let promise1 = promise.then(() => {
+        new Promise((resolve) => {
+            setTimeout(() => {
+                console.log('222')
+                resolve()
+            }, 3000)
+        })
+    })
+    let promise2 = promise1.then(() => {
+        new Promise((resolve) => {
+            setTimeout(() => {
+                console.log('333')
+                resolve()
+            }, 1000)
+        })
+    })
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div></div>
+
+<script>
+    let url = new URL(location.href);
+    let userJSON = url.searchParams.get('id');
+
+    fetch('http://jsonplaceholder.typicode.com/users/'+ userJSON)
+        .then(value => value.json())
+        .then(user => {
+            objectUser(user);
+        })
+    function objectUser(user) {
+        let div = document.getElementsByTagName('div')[0]
+        for (const item in user) {
+            if (typeof user[item] !== "object") {
+                const ulBlock = document.createElement('ul');
+                ulBlock.innerText = '';
+                const liBlock = document.createElement('li');
+                liBlock.innerText = `${item}: ${user[item]}`;
+                ulBlock.appendChild(liBlock);
+                div.appendChild(ulBlock);
+            }else {
+                const ulBlock1 = document.createElement('ul');
+                ulBlock1.innerText = `${item}:`
+                ulBlock1.classList.add('text');
+                div.appendChild(ulBlock1);
+                objectUser(user[item]);
+            }
+        }
+    }
+
+
+</script>
+</body>
+</html>
